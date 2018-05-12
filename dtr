@@ -1,0 +1,33 @@
+### Template for DTR Memo
+Project:  Enigma
+Group Member Names:
+  Lucas & Emmie
+Project Expectations: What does each group member hope to get out of this project?
+  Write good code, not just code that works.
+  Learn to use and appreciate HoundCI and Rubocop
+Goals and expectations:
+  Complete the project with time to refactor.
+Team strengths:
+  Lucas: achiever, input, relator, learner, intellection
+  Emmie: achiever, relator, learner, intellection, futuristic
+How to overcome obstacles:
+  Timer.
+Schedule Expectations (When are we available to work together and individually?):
+  Pair program on this project for the most part but if time permits not opposed to experimenting with divide and conquer approach
+Communication Expectations (How and often will we communicate? How do we keep lines of communication open?):
+  Pair for the whole project.
+Abilities Expectations (Technical strengths and areas for desired improvement):
+  8 line or less methods in code
+  unit testing and integration testing
+Workload Expectations (What features do we each want to work on?):
+  Pairing for whole project.
+Workflow Expectations (Git workflow/Tools/Code Review/Reviewing Pull Requests):
+  driver/navigator.
+  push to GitHub every 30 minutes.
+Expectations for giving and receiving feedback:
+  Be direct
+Agenda to discuss project launch:
+  starting Saturday morning at Turing 7:30am
+Ideas: brainstorming Friday night, set up and review Rubocop and HoundCI prior to Saturday's meeting
+Tools: HoundCI, Rubocop, GitHub, Atom, git
+Additional Notes:
