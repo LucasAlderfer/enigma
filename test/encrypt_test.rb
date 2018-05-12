@@ -2,6 +2,7 @@ require './test/test_helper.rb'
 require './lib/encrypt.rb'
 require './lib/key_generator.rb'
 require './lib/offset_generator.rb'
+require './lib/character_map'
 
 class EncryptTest < Minitest::Test
 
@@ -36,4 +37,8 @@ class EncryptTest < Minitest::Test
    assert_equal 2, e.rotations[3].length
   end
 
+  def test_it_can_can_calculate_shift_keys
+    e = Encrypt.new("01234")
+    assert_equal 4, e.calculate_shift_keys.length
+  end
 end
