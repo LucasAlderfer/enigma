@@ -6,6 +6,7 @@ include CharacterMap
 attr_reader :encryption_key, :rotations
 
   def initialize(key = KeyGenerator.new.key, date = Time.now)
+    #still need to pass in message as well WIP
     @encryption_key = key
     @current_date = OffsetGenerator.new(date)
     @rotations = []
