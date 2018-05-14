@@ -17,26 +17,4 @@ class KeyGeneratorTest < Minitest::Test
     k = KeyGenerator.new
     assert_equal 5, k.key.length
   end
-
-  def test_it_can_combine_elements_from_key_array
-    k = KeyGenerator.new(["0","1","2","3","4"])
-    assert_equal 5, k.key.length
-    assert_equal "01", k.rotations[0]
-    assert_equal "12", k.rotations[1]
-    assert_equal "23", k.rotations[2]
-    assert_equal "34", k.rotations[3]
-  end
-
-  def test_can_group_rotations
-    k = KeyGenerator.new(["0","1","2","3","4"])
-    assert_equal ['01','12','23','34'], k.rotations
-  end
-
-  def test_can_generate_its_own_key
-    k = KeyGenerator.new
-    assert_equal 4, k.rotations.length
-    assert_equal 2, k.rotations[0].length
-    assert_equal 2, k.rotations[3].length
-  end
-
 end
