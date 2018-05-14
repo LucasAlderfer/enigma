@@ -10,7 +10,7 @@ class KeyGeneratorTest < Minitest::Test
 
   def test_it_has_generates_a_number
     k = KeyGenerator.new
-    assert_instance_of Array, k.key
+    assert_equal Integer, k.key[0].to_i
   end
 
   def test_it_has_5_digits
