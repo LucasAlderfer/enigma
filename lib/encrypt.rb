@@ -1,5 +1,6 @@
 require './lib/key_generator.rb'
 require './lib/character_map.rb'
+require 'pry'
 
 class Encrypt
 include CharacterMap
@@ -22,8 +23,13 @@ attr_reader :encryption_key, :rotations
 
   def calculate_shift_keys
     merge_key_with_offset = @rotations.zip(@current_date.extract_offset)
-    #=> [["01", "8"], ["12", "3"], ["23", "2"], ["34", "4"]]
-    #need to iterate over the rotations array and the current date array
-    #to convert the string elements to integer elements.  If the numbers are integers we can zip them and sum the elements.
+    integer_array = merge_key_with_offset.map do |sub_array|
+      sub_array.map do |string|
+        string.to_i
+      end
+    end
+    integer_array.map do |numbers|
+      numbers.sum
+    end
   end
 end
