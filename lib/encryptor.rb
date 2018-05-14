@@ -2,11 +2,12 @@ require './lib/key_generator.rb'
 require './lib/character_map.rb'
 require 'pry'
 
-class Encrypt
+class Encryptor
 include CharacterMap
 attr_reader :encryption_key, :rotations
 
-  def initialize(key = KeyGenerator.new.key, date = Time.now)
+  def initialize(message, key = KeyGenerator.new.key, date = Time.now)
+    @message = message.chars
     @encryption_key = key
     @current_date = OffsetGenerator.new(date)
     @rotations = []
@@ -32,4 +33,18 @@ attr_reader :encryption_key, :rotations
       numbers.sum
     end
   end
+
+  def encrypt
+    output = []
+    shift_keys = calculate_shift_keys
+    @message.each_with_index do |character, index|
+      new_index = character_map.index(character) + shift_keys[0]
+      new_index = (new_index % 38) - 1 if new_index > 38
+        shifted_character = character_map[new_index]
+        output << shifted_character
+        shift_keys.rotate!
+    end
+    output.join
+  end
+
 end
