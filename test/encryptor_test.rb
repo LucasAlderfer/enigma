@@ -60,5 +60,4 @@ class EncryptorTest < Minitest::Test
     e = Encryptor.new("phone booth number 1","01234", Time.new(2018,05,14))
     assert_equal "ywamnm0nx869w9.an6w0", e.encrypt
   end
-
 end

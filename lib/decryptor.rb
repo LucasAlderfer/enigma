@@ -3,11 +3,11 @@ require './lib/character_map.rb'
 require './lib/offset_generator.rb'
 require 'pry'
 
-class Encryptor
+class Decryptor
 include CharacterMap
 attr_reader :encryption_key, :rotations
 
-  def initialize(message, key = KeyGenerator.new.key, date = Time.now)
+  def initialize(message, key, date = Time.now)
     @message = message.chars
     @encryption_key = key
     @current_date = OffsetGenerator.new(date)
@@ -35,11 +35,11 @@ attr_reader :encryption_key, :rotations
     end
   end
 
-  def encrypt
+  def decrypt
     output = []
     shift_keys = calculate_shift_keys
     @message.each_with_index do |character, index|
-      new_index = character_map.index(character) + shift_keys[0]
+      new_index = character_map.index(character) - shift_keys[0]
       new_index = (new_index % 38) - 1 if new_index > 38
         shifted_character = character_map[new_index]
         output << shifted_character
