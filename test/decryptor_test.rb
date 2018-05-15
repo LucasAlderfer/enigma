@@ -1,8 +1,5 @@
 require './test/test_helper.rb'
 require './lib/decryptor.rb'
-require './lib/key_generator.rb'
-require './lib/offset_generator.rb'
-require './lib/character_map'
 
 class DecryptorTest < Minitest::Test
 
