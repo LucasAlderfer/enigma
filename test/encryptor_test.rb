@@ -37,10 +37,10 @@ class EncryptorTest < Minitest::Test
   def test_it_can_can_calculate_shift_keys
     e = Encryptor.new("..end..","12345", Time.new(2018,05,14))
     assert_equal 4, e.calculate_shift_keys.length
-    assert_equal 9, e.calculate_shift_keys[0]
-    assert_equal 15, e.calculate_shift_keys[1]
-    assert_equal 25, e.calculate_shift_keys[2]
-    assert_equal 38, e.calculate_shift_keys[3]
+    assert_equal 20, e.calculate_shift_keys[0]
+    assert_equal 26, e.calculate_shift_keys[1]
+    assert_equal 36, e.calculate_shift_keys[2]
+    assert_equal 49, e.calculate_shift_keys[3]
   end
 
   def test_it_has_a_character_map
@@ -56,5 +56,10 @@ class EncryptorTest < Minitest::Test
   def test_it_can_encrypt_a_whole_message
     e = Encryptor.new("phone booth number 1","01234", Time.new(2018,05,14))
     assert_equal "ywamnm0nx869w9.an6w0", e.encrypt
+  end
+
+  def test_it_can_encrypt_spec_message
+    e = Encryptor.new("This is so secret ..end..")
+    assert_equal "", e.encrypt
   end
 end
