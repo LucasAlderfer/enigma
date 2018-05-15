@@ -58,4 +58,19 @@ class DecryptorTest < Minitest::Test
     assert_equal "phone booth number 1", d.decrypt
   end
 
+  def test_it_can_decrypt_spec_message
+    d = Decryptor.new("a7f2r8pi,b72y2ooax8jyaajs", "12345", Date.today)
+    assert_equal "this is so secret ..end..", d.decrypt
+  end
+
+  def test_using_date_class_does_not_break
+    d = Decryptor.new("a7f2r8pi,b72y2ooax8jyaajs", "12345", Time.new(2018,05,15))
+    assert_equal "this is so secret ..end..", d.decrypt
+  end
+
+  def test_it_can_decrypt_two_whole_messages
+    d = Decryptor.new("ywamnm0nx869w9.an6w0", "01234", Time.new(2018,05,14))
+    assert_equal "phone booth number 1", d.decrypt
+  end
+
 end

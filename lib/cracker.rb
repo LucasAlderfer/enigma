@@ -1,42 +1,25 @@
 require './lib/key_generator.rb'
 require './lib/character_map.rb'
 require './lib/offset_generator.rb'
+require './lib/decryptor.rb'
 require 'pry'
 
 class Cracker
+  attr_reader :message, :current_date
 include CharacterMap
 
   def initialize(message, date = Time.now)
-    @message = message.chars
-    @current_date = OffsetGenerator.new(date)
+    @message = message
+    @date = date
+    @key = "00000"
   end
 
-  def isolate_quad
-    last_four = @message[-4..-1]
-  end
-
-  def quad_index
-    shift_keys = []
-    isolate_quad.each do |character|
-      index = character_map.index(character)
-      shift_keys << index
+  def crack_key
+    d = Decryptor.new(@message, @key, @date)
+    until d.decrypt[-7..-1] == "..end.."
+      @key = (@key.to_i + 1).to_s.rjust(5, "0")
+      d = Decryptor.new(@message, @key, @date)
     end
-    shift_keys
-  end
-
-  def offsets_to_integers
-    @current_date.extract_offset.map do |string|
-      string.to_i
-    end
-  end
-
-  def calculate_rotations
-    rotations = []
-    index = 0
-    until index == 4
-      rotations << quad_index[index] - offsets_to_integers[index]
-      index += 1
-    end
-    rotations
+    @key
   end
 end

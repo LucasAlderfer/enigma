@@ -35,7 +35,7 @@ class EncryptorTest < Minitest::Test
   end
 
   def test_it_can_can_calculate_shift_keys
-    e = Encryptor.new("a","01234", Time.new(2018,05,14))
+    e = Encryptor.new("..end..","12345", Time.new(2018,05,14))
     assert_equal 4, e.calculate_shift_keys.length
     assert_equal 9, e.calculate_shift_keys[0]
     assert_equal 15, e.calculate_shift_keys[1]
