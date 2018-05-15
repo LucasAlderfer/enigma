@@ -8,9 +8,9 @@ class KeyGeneratorTest < Minitest::Test
     assert_instance_of KeyGenerator, k
   end
 
-  def test_it_has_generates_a_number
+  def test_it_generates_a_number
     k = KeyGenerator.new
-    assert_equal Integer, k.key[0].to_i
+    assert_equal Integer, k.key[0].to_i.class
   end
 
   def test_it_has_5_digits
