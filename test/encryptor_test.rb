@@ -7,7 +7,7 @@ require './lib/character_map'
 class EncryptorTest < Minitest::Test
 
   def test_it_exists
-    e = Encryptor.new("a","01234")
+    e = Encryptor.new("a")
     assert_instance_of Encryptor, e
   end
 
@@ -31,10 +31,10 @@ class EncryptorTest < Minitest::Test
   end
 
   def test_can_generate_its_own_key
-    e = Encryptor.new("a","01234")
-    assert_equal 4, e.rotations.length
-    assert_equal 2, e.rotations[0].length
-    assert_equal 2, e.rotations[3].length
+   e = Encryptor.new("a","01234")
+   assert_equal 4, e.rotations.length
+   assert_equal 2, e.rotations[0].length
+   assert_equal 2, e.rotations[3].length
   end
 
   def test_it_can_can_calculate_shift_keys
@@ -47,7 +47,7 @@ class EncryptorTest < Minitest::Test
   end
 
   def test_it_has_a_character_map
-    e = Encryptor.new("a","01234")
+    e = Encryptor.new("a")
     assert_equal 39, e.character_map.length
   end
 
