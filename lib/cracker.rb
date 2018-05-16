@@ -1,11 +1,7 @@
-require './lib/key_generator.rb'
-require './lib/character_map.rb'
-require './lib/offset_generator.rb'
 require './lib/decryptor.rb'
 
 class Cracker
   attr_reader :message, :date
-include CharacterMap
 
   def initialize(message, date = Time.now)
     @message = message
