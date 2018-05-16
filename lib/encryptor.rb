@@ -1,15 +1,14 @@
 require './lib/key_generator.rb'
 require './lib/character_map.rb'
 require './lib/offset_generator.rb'
-require 'pry'
 
 class Encryptor
 include CharacterMap
-attr_reader :encryption_key, :rotations
+attr_reader :key, :rotations
 
   def initialize(message, key = KeyGenerator.new.key, date = Time.now)
     @message = message.chars
-    @encryption_key = key
+    @key = key
     @current_date = OffsetGenerator.new(date)
     @rotations = []
     make_rotations
@@ -18,7 +17,7 @@ attr_reader :encryption_key, :rotations
   def make_rotations
     index = 0
     4.times do
-      @rotations << (@encryption_key[index] + @encryption_key[index + 1])
+      @rotations << (@key[index] + @key[index + 1])
       index += 1
     end
   end
@@ -35,20 +34,47 @@ attr_reader :encryption_key, :rotations
     end
   end
 
-  def encrypt
-    output = []
-    shift_keys = calculate_shift_keys
-    @message.each_with_index do |character, index|
-      new_index = character_map.index(character) + shift_keys[0]
-      if new_index.abs > 38 && new_index > -1
-        new_index = (new_index % 38) - 1
-      elsif new_index.abs > 38 && new_index < 0
-        new_index = (new_index % 38) + 1
-      end
-      shifted_character = character_map[new_index]
-      output << shifted_character
-      shift_keys.rotate!
+  def actual_shift
+    formatted_shift = []
+    calculate_shift_keys.each do |number|
+      x = number - ((number / character_map.length) * character_map.length)
+      formatted_shift << x
     end
-    output.join
+    formatted_shift
+  end
+
+  def current_index
+    current_index = []
+    @message.map do |letter|
+    current_index << character_map.index(letter)
+    end
+    current_index
+  end
+
+  def find_new_index
+    actual = actual_shift
+    new_index = []
+    current_index.map do |number|
+      new_index << number + actual[0]
+      actual.rotate!
+    end
+    new_index
+  end
+
+  def actual_index
+    actual_index = []
+    find_new_index.map do |number|
+      x = number - ((number / character_map.length) * character_map.length)
+      actual_index << x
+    end
+    actual_index
+  end
+
+  def encrypt
+    encrypted_text = []
+    actual_index.each do |number|
+      encrypted_text << character_map[number]
+    end
+    encrypted_text.join
   end
 end

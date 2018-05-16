@@ -2,6 +2,7 @@ require './lib/encryptor.rb'
 require './lib/decryptor.rb'
 require './lib/cracker.rb'
 require 'date'
+
 class Enigma
 
   def encrypt(message, key = KeyGenerator.new.key, date = Time.now)
