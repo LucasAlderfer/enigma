@@ -5,5 +5,5 @@ module CharacterMap
   end
 end
 
-  # character_map = [*'A'..'z', *'!'..'?', ('|'), ('@')]
-  # implementation with extensions work- test would need to be adjusted.
+# character_map = [*'A'..'z', *'!'..'?', ('|'), ('@')]
+# implementation with extensions work- test would need to be adjusted.

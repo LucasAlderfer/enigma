@@ -1,5 +1,5 @@
-require './test/test_helper.rb'
-require './lib/key_generator.rb'
+require './test/test_helper'
+require './lib/key_generator'
 
 class KeyGeneratorTest < Minitest::Test
 

@@ -1,5 +1,5 @@
-require './test/test_helper.rb'
-require './lib/encryptor.rb'
+require './test/test_helper'
+require './lib/encryptor'
 
 class EncryptorTest < Minitest::Test
 
@@ -70,7 +70,8 @@ class EncryptorTest < Minitest::Test
 
   def test_it_can_encrypt_multiple_words
     e = Encryptor.new("this is a test","89768", Time.new(2018,05,14))
-    assert_equal [38, 29, 8, 12, 16, 30, 18, 30, 19, 19, 19, 37, 37, 2], e.actual_index
+    result = [38, 29, 8, 12, 16, 30, 18, 30, 19, 19, 19, 37, 37, 2]
+    assert_equal result, e.actual_index
   end
 
   def test_it_can_encrypt_total_number_characters
