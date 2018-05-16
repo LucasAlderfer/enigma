@@ -40,7 +40,6 @@ attr_reader :encryption_key, :rotations
     shift_keys = calculate_shift_keys
     @message.each_with_index do |character, index|
       new_index = character_map.index(character) + shift_keys[0]
-      binding.pry
       if new_index.abs > 38 && new_index > -1
         new_index = (new_index % 38) - 1
       elsif new_index.abs > 38 && new_index < 0
