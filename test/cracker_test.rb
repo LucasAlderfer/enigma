@@ -1,5 +1,5 @@
 require './test/test_helper'
-require './lib/cracker.rb'
+require './lib/cracker'
 
 class CrackerTest < Minitest::Test
 

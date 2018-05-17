@@ -1,6 +1,6 @@
-require './lib/encryptor.rb'
-require './lib/decryptor.rb'
-require './lib/cracker.rb'
+require './lib/encryptor'
+require './lib/decryptor'
+require './lib/cracker'
 require 'date'
 
 class Enigma

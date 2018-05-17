@@ -1,5 +1,5 @@
-require './test/test_helper.rb'
-require './lib/offset_generator.rb'
+require './test/test_helper'
+require './lib/offset_generator'
 
 class OffsetGeneratorTest < Minitest::Test
   def test_it_exists

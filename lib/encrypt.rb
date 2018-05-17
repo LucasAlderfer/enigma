@@ -1,12 +1,12 @@
-require './lib/encryptor.rb'
+require './lib/encryptor'
 require 'date'
 
-content = File.open("message.txt", "r")
+content = File.open('message.txt', 'r')
 input = content.read.strip
 content.close
 
 en = Encryptor.new(input)
-content = File.new("encrypted.txt", "w")
+content = File.new('encrypted.txt', 'w')
 content.puts(en.encrypt)
 content.close
 

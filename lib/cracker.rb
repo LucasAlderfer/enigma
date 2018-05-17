@@ -1,4 +1,4 @@
-require './lib/decryptor.rb'
+require './lib/decryptor'
 
 class Cracker
   attr_reader :message, :date
