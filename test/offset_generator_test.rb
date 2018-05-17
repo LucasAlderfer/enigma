@@ -23,7 +23,7 @@ class OffsetGeneratorTest < Minitest::Test
   def test_it_can_extract_last_four_dig_of_date_squared
     t = Time.new(2007,11,19)
     og = OffsetGenerator.new(t)
-    result = %w[5, 4, 4, 9]
+    result = %w[5 4 4 9]
     assert_equal result, og.extract_offset
   end
 end
