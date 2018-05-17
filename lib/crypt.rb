@@ -1,5 +1,5 @@
+# all common encryption and decryption methods
 module Crypt
-#all common encryption and decryption methods
 
   def make_rotations
     index = 0
@@ -33,7 +33,7 @@ module Crypt
   def current_index
     current_index = []
     @message.map do |letter|
-    current_index << character_map.index(letter)
+      current_index << character_map.index(letter)
     end
     current_index
   end
